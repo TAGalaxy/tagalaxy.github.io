@@ -8,7 +8,7 @@ function resolve(dir) {
 
 module.exports = {
   publicPath: '', //使用相对路径
-  outputDir: './index.html',
+  outputDir: 'dist',
   // assetsDir: 'static',
   productionSourceMap: false,
   chainWebpack: config => {
@@ -16,8 +16,7 @@ module.exports = {
       args[0].fileBlacklist.push(/\.css/, /\.js/)
       return args
     })
-    config.plugin('inline-source')
-      .use('html-webpack-inline-source-plugin')
+    config.plugin('inline-source').use('html-webpack-inline-source-plugin')
     config.plugin('html').tap(args => {
       args[0].chunksSortMode = 'none'
       args[0].inlineSource = '(.css|.js$)'
