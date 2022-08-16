@@ -9,6 +9,9 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "html-webpack-inline-source-plugin": "^0.0.10",
+    "html-webpack-plugin": "^5.5.0",
+    "prettier": "^2.7.1",
     "vue": "^3.0.0"
   },
   "devDependencies": {
