@@ -2,7 +2,8 @@ import * as path from "path";
 import * as webpack from "webpack";
 // @ts-ignore
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { VueLoaderPlugin } = require("vue-loader");
+const { VueLoaderPlugin } = require("vue-loader");// 加载vue文件
+const { DefinePlugin } = require("webpack");// 定义环境变量插件
 
 const config: webpack.Configuration = {
   mode: "development",
@@ -50,6 +51,13 @@ const config: webpack.Configuration = {
       views: "@/views", //设置视图别名
     },
   },
-  plugins: [new HtmlWebpackPlugin(), new VueLoaderPlugin()],
+  plugins: [
+    new HtmlWebpackPlugin(),
+    new VueLoaderPlugin(),
+    new DefinePlugin({
+      __VUE_OPTIONS_API__: true,// 允许使用
+      __VUE_PROD_DEVTOOLS__: false,// 生产环境下不使用开发工具
+    }),
+  ],
 };
 module.exports = config;
