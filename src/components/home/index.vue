@@ -28,7 +28,7 @@
 
 <style lang="less" scoped>
   .app-container {
-    background-image: url('src/assets/images/background.jpg');
+    background-image: url('../../assets/images/background.jpg');
     background-size: 100% 100%;
   }
 </style>
