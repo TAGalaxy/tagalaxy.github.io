@@ -9,9 +9,14 @@ const toolsRoutes = {
       path: '/tools/git',
       name: 'ToolsGit',
       component: () => import('/@/views/tools/git/index.vue'),
-      title: '测试',
+      meta: {
+        title: '测试',
+      },
     },
   ],
+  meta: {
+    title: '实用工具',
+  },
 };
 
 export default toolsRoutes;

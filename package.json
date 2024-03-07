@@ -10,6 +10,7 @@
     "reinstall": "rm -rf pnpm-lock.yaml && rm -rf package.lock.json && rm -rf node_modules && npm run bootstrap"
   },
   "dependencies": {
+    "ant-design-vue": "4.x",
     "less": "4.1.2",
     "vue": "^3.2.25",
     "vue-router": "^4.3.0"
