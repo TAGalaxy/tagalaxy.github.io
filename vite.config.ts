@@ -1,9 +1,10 @@
-import vue from "@vitejs/plugin-vue";
-import type { UserConfig, ConfigEnv } from "vite";
-import { resolve } from "path";
+import vue from '@vitejs/plugin-vue';
+import type { UserConfig, ConfigEnv } from 'vite';
+import { resolve } from 'path';
 
 function pathResolve(dir: string) {
-  return resolve(process.cwd(), ".", dir);
+  console.log(dir);
+  return resolve(process.cwd(), '.', dir);
 }
 
 export default ({ command, mode }: ConfigEnv): UserConfig => {
@@ -14,9 +15,12 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         // /@/xxxx => src/xxxx
         {
           find: /\/@\//,
-          replacement: pathResolve("src") + "/",
+          replacement: pathResolve('src') + '/',
         },
       ],
+    },
+    define: {
+      __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: 'true',
     },
   };
 };

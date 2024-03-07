@@ -1,5 +1,13 @@
-import { createApp } from "vue";
-import App from "./App.vue";
-import "/@/style/index.less";
+import { createApp } from 'vue';
+import App from './App.vue';
+import '/@/style/index.less';
+import { router } from './router';
 
-createApp(App).mount("#app");
+async function init() {
+  const app = createApp(App);
+
+  app.use(router);
+
+  app.mount('#app');
+}
+init();
