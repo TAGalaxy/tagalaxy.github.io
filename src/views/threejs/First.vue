@@ -1,14 +1,14 @@
 <template>
   <div class="h-full w-full">
-    <div class="h-[60px]">
+    <div class="h-[40px] px-[12px] flex items-center">
       <Button @click="toggleScreen">全屏缩放</Button>
     </div>
-    <div id="first-three" class="h-[600px] w-full"> </div>
+    <div id="first-three" ref="threeDom" class="dom-height w-full"> </div>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { onMounted } from 'vue';
+  import { onMounted, ref } from 'vue';
   import { Button } from 'ant-design-vue';
   // const { proxy } = getCurrentInstance() as any;
   // const THREE = proxy.$THREE;
@@ -16,15 +16,17 @@
   import { nextTick } from 'vue';
   import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
-  onMounted(() => {
-    nextTick(() => {
-      dom = document.getElementById('first-three');
-    });
+  let dom: any = nextTick().then(() => {
+    console.log(document?.getElementById('first-three'));
+    return document?.getElementById('first-three');
   });
 
-  let dom: any = null;
-  const height = dom?.offsetHeight as number;
-  const width = dom?.offsetWidth as number;
+  console.log(dom);
+  const threeDom = ref<any>(null);
+  console.log(threeDom.value);
+
+  const height = threeDom.value?.offsetHeight as number;
+  const width = threeDom.value?.offsetWidth as number;
   console.log(height, width);
 
   // 视角
@@ -43,8 +45,8 @@
   // 创建几何体
   const geometry = new THREE.BoxGeometry(1, 1, 1);
   // 创建材质
-  const material = new THREE.MeshBasicMaterial({ color: '#ff6666' });
   const parentMaterial = new THREE.MeshBasicMaterial({ color: '#f4b6b2' });
+  const material = new THREE.MeshBasicMaterial({ color: '#ff6666' });
   // 网格
   const parentCube = new THREE.Mesh(geometry, parentMaterial);
   const cube = new THREE.Mesh(geometry, material);
@@ -101,7 +103,14 @@
     camera.aspect = windowWidth / windowHeight;
     camera.updateProjectionMatrix(1);
   });
-  function toggleScreen() {}
+
+  function toggleScreen() {
+    renderer.domElement.requestFullscreen();
+  }
 </script>
 
-<style scoped></style>
+<style scoped lang="less">
+  .dom-height {
+    height: calc(100% - 40px);
+  }
+</style>

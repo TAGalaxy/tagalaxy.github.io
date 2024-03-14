@@ -10,7 +10,7 @@ const threeRoutes = {
       name: 'ThreeFirst',
       component: () => import('/@/views/threejs/First.vue'),
       meta: {
-        title: '第一个threejs页面',
+        title: 'threejs页面',
       },
     },
   ],
