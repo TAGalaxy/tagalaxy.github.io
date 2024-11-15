@@ -1,0 +1,1 @@
+import{aN as f,w as v,aO as i,L as m,f as d,ar as g,an as w,k as S}from"./index.0994ffcf.js";function I(n,u="value",o="change",c){const e=f(),s=e==null?void 0:e.emit,t=v({value:n[u]}),r=i(t),l=a=>{t.value=a};return m(()=>{t.value=n[u]}),[d({get(){return t.value},set(a){g(a,r.value)||(t.value=a,s==null||s(o,a,...w(S(c))||[]))}}),l,r]}export{I as u};
